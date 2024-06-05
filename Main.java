@@ -28,8 +28,9 @@ class Cat {
 }
 
 public class Main {
+    static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
 
         System.out.println("MENU");
         System.out.println("1. Create a cat");
@@ -48,9 +49,29 @@ public class Main {
 
     public static void createACat() {
         System.out.println("Create the cat");
-        Cat cat = new Cat();
+        System.out.println("");
 
-        cat.create("Boll", "Persian", new String[] { "White", "Black" });
+        System.out.println("Enter the cat's name");
+        String createCatName = input.nextLine();
+        System.out.println("");
+
+        System.out.println("Enter the cat's race");
+        String createCatRace = input.nextLine();
+        System.out.println("");
+
+        System.out.println("How many colors does the cat have?");
+        int numColors = Integer.parseInt(input.nextLine());
+        System.out.println("");
+
+        String[] createCatColor = new String[numColors];
+        for (int i = 0; i < numColors; i++) {
+            System.out.println("Enter color " + (i + 1) + ":");
+            createCatColor[i] = input.nextLine();
+        }
+        System.out.println("");
+
+        Cat cat = new Cat();
+        cat.create(createCatName, createCatRace, createCatColor);
         cat.show();
         main(null);
     }
